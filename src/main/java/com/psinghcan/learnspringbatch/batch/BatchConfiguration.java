@@ -3,7 +3,6 @@ package com.psinghcan.learnspringbatch.batch;
 import com.psinghcan.learnspringbatch.model.Person;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
@@ -58,7 +57,7 @@ public class BatchConfiguration {
     }
 
     @Bean
-    public Job importUserJob(JobCompletionNotificationListener listener) {
+    public Job importUserJob(JobProgressListener listener) {
         return jobBuilderFactory.get("importUserJob")
                 .incrementer(new RunIdIncrementer())
                 .listener(listener)
