@@ -24,5 +24,11 @@ public class PersonService {
         return personRepository.getAllByStatusId(11);
     }
 
+    public void updateStatus(Person person, int newStatus){
+        if (person.getPersonId() > 0 && person.getStatusId() != newStatus){
+            personRepository.updateStatus(person.getPersonId(), newStatus);
+        }
+    }
+
     private final PersonRepository personRepository;
 }
